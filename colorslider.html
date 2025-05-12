@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RGB Slider</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    #color-box {
+      width: 400px;
+      height: 100px;
+      margin: 20px auto;
+      background-color: rgb(255, 123, 71);
+      line-height: 100px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      border-radius: 8px;
+    }
+
+    .slider-container {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 30px;
+    }
+
+    .slider-group {
+      text-align: center;
+    }
+
+    input[type=range] {
+      width: 120px;
+    }
+
+    .value {
+      margin-top: 5px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>RGB Color Mixer</h2>
+  <p>Experiment by mixing the RGB values below:</p>
+
+  <div id="color-box">rgb(255, 123, 71)</div>
+
+  <div class="slider-container">
+    <div class="slider-group">
+      <label for="red">RED</label><br>
+      <input type="range" id="red" min="0" max="255" value="255" oninput="updateColor()">
+      <div class="value" id="red-val">255</div>
+    </div>
+    <div class="slider-group">
+      <label for="green">GREEN</label><br>
+      <input type="range" id="green" min="0" max="255" value="123" oninput="updateColor()">
+      <div class="value" id="green-val">123</div>
+    </div>
+    <div class="slider-group">
+      <label for="blue">BLUE</label><br>
+      <input type="range" id="blue" min="0" max="255" value="71" oninput="updateColor()">
+      <div class="value" id="blue-val">71</div>
+    </div>
+  </div>
+
+  <script>
+    function updateColor() {
+      const r = document.getElementById("red").value;
+      const g = document.getElementById("green").value;
+      const b = document.getElementById("blue").value;
+
+      const color = `rgb(${r}, ${g}, ${b})`;
+      document.getElementById("color-box").style.backgroundColor = color;
+      document.getElementById("color-box").textContent = color;
+
+      document.getElementById("red-val").textContent = r;
+      document.getElementById("green-val").textContent = g;
+      document.getElementById("blue-val").textContent = b;
+    }
+
+    // Initialize on load
+    updateColor();
+  </script>
+
+</body>
+</html>
